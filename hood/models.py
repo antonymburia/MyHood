@@ -56,10 +56,8 @@ class Post(models.Model):
         return searched_post
 
 
-class Rating(models.Model):
-    design = models.IntegerField(default=1)
-    content = models.IntegerField(default=1)
-    usability = models.IntegerField(default=1)
+class Category(models.Model):
+    category = models.TextField(max_length=1000)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     post_id = models.ForeignKey(Post,on_delete=models.CASCADE)
     
