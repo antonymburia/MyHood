@@ -1,6 +1,6 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="/">Awwards</a>
+  <a class="navbar-brand" href="/">MyHood</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -18,15 +18,15 @@
       <li class="nav-item">
         <a class="nav-link active" href="{%url 'newpost'%}" style="line-height: 3;">
           <i class="fa fa-envelope-o">
-            <span class="badge badge-warning" >+</span>
+            <span class="badge badge-warning" > &nbsp; + &nbsp;</span>
           </i>
-          Post 
+          New Post 
         </a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="line-height: 3;">
           <i class="fa fa-envelope-o">
-            <span class="badge badge-primary">-</span>
+            <span class="badge badge-primary">&nbsp; - &nbsp;</span>
           </i>
           Account
         </a>
@@ -49,6 +49,14 @@
   </div>
 </nav>
 <style>
+    @import url('//fonts.cdnfonts.com/css/billabong');
+  .navbar-brand{
+    font-family: "billabong", sans-serif;
+    font-size: 30px;
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+
   .navbar-icon-top .navbar-nav .nav-link > .fa {
   position: relative;
   width: 36px;

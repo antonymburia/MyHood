@@ -56,12 +56,30 @@ class Post(models.Model):
         return searched_post
 
 
-class Category(models.Model):
-    category = models.TextField(max_length=1000)
+class Hood(models.Model):
+    name = models.TextField(max_length=1000)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     post_id = models.ForeignKey(Post,on_delete=models.CASCADE)
-    
 
+
+def save_hood(self):
+        self.save()
+
+def delete_hood(self):
+        self.delete()
+    
+class Business(models.Model):
+    name = models.TextField(max_length=1000)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    post_id = models.ForeignKey(Post,on_delete=models.CASCADE)
+
+
+def save_business(self):
+        self.save()
+
+def delete_business(self):
+        self.delete()
+    
 class Comment(models.Model):
     post_id = models.ForeignKey(Post,on_delete=models.CASCADE)
     user = models.ForeignKey(User,on_delete = models.CASCADE)

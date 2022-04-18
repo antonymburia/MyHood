@@ -14,8 +14,11 @@
   <div class="posts">
     <div class="row">
       <div class="col-md-4">
-        <div class="categories">
-          <h3><b>Categories</b></h3>
+        <div class="hood">
+          <h3><b>hood</b></h3>
+        </div>
+        <div class="business">
+
         </div>
       </div>
       {% for post in all_posts %}
@@ -35,14 +38,16 @@
                 </tr>
 
                 <tr>
-                  <td><p class="card-text"><b>Posted by:</b> {{post.user}} </p></td>
                   <td>
-                    <a style="text-align: center;" href=" {{post.link}} "> 
-                    <button class="btn btn-primary">
-                      {{post.link}}
-                    </button> 
-                  </a>
-                </td>
+                    <p class="card-text"><b>Posted by:</b> {{post.user}} </p>
+                  </td>
+                  <td>
+                    <a style="text-align: center;" href=" {{post.link}} ">
+                      <button class="btn btn-primary">
+                        {{post.link}}
+                      </button>
+                    </a>
+                  </td>
                 </tr>
 
               </table>
@@ -50,11 +55,16 @@
               <p><b>
                   {{post.description}}
                 </b></p>
-              
-              
+
+
             </div>
             <div class="card-footer">
+              <div class="hoodname">
 
+              </div>
+              <div class="b-name">
+
+              </div>
 
             </div>
           </div>
