@@ -6,7 +6,7 @@
  <meta charset="utf-8">
  <meta name="viewport" content="width=device-width, initial-scale=1">
 
- <title>New Project</title>
+ <title>New Post</title>
 
 
  {% block styles %}
@@ -36,11 +36,11 @@
     </li>
 
     <li class="nav-item">
-     <a class="nav-link active" href="{%url 'newproject'%}" style="line-height: 3;">
+     <a class="nav-link active" href="{%url 'newpost'%}" style="line-height: 3;">
       <i class="fa fa-envelope-o">
        <span class="badge badge-warning">+</span>
       </i>
-      Post Project
+      Post post
      </a>
     </li>
     <li class="nav-item dropdown">
@@ -75,7 +75,7 @@
 
 
  <div class="container">
-  <form action="{%url 'newproject'%}" method="post" enctype="multipart/form-data">
+  <form action="{%url 'newpost'%}" method="post" enctype="multipart/form-data">
    {%csrf_token%}
 
    {% bootstrap_form form%}
