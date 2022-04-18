@@ -34,8 +34,8 @@ class Post(models.Model):
     def save_post(self):
         self.save()
 
-    def __str__(self):
-        return self.hood
+    # def __str__(self):
+    #     return self.hood
 
     @classmethod
     def all_posts(cls):
@@ -55,8 +55,7 @@ class Post(models.Model):
 
     @classmethod
     def search_post(cls,search_term):
-        searched_post = cls.objects.filter(title = search_term)
-        return searched_post
+        return cls.objects.filter(title__icontains=search_term).all()
 
 
 class Hood(models.Model):
@@ -74,6 +73,7 @@ def __str__(self):
 
 class Business(models.Model):
     name = models.CharField(max_length=500)
+    contact = models.TextField(max_length=20,default=None)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     
 def __str__(self):
