@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Post, Profile,Hood, Comment
+from .models import Post, Profile,Hood, Comment, Business
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout
 from .forms import UpdateProfileForm,NewPostForm,CommentForm
@@ -11,7 +11,9 @@ from rest_framework.views import APIView
 def home(request):
 
     all_posts = Post.all_posts()
-    return render(request,'home.html',{'all_posts':all_posts})
+    hoods = Hood.objects.all()
+    businesses = Business.objects.all()
+    return render(request,'home.html',{'all_posts':all_posts,'hoods':hoods,'businesses':businesses})
 
 @login_required(login_url = '/accounts/login/')
 def profile(request):

@@ -15,15 +15,21 @@
     <div class="row">
       <div class="col-md-4">
         <div class="hood">
-          <h3><b>hood</b></h3>
+          <h3><b>hoods</b></h3>
+          {%for hood in hoods%}
+          {{hood.name}} <br>
+          {%endfor%}
         </div>
         <div class="business">
-
+          <h3><b>Businesses</b></h3>
+          {%for business in businesses%}
+          {{business.name}} <br>
+          {%endfor%}
         </div>
       </div>
       {% for post in all_posts %}
       <div class="col-md-8">
-        <a href="/post/{{post.id}}">
+        <a href="/post/{{post.id}}" style="text-decoration: none;">
           <div class="card">
             <div class="card-body">
               <table>
@@ -39,14 +45,23 @@
 
                 <tr>
                   <td>
-                    <p class="card-text"><b>Posted by:</b> {{post.user}} </p>
+                    <table>
+                      <tr>
+                        <td>
+                          <p class="card-text"><b>Posted by:</b> {{post.user}} </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <h3><b>Hood:</b></h3>
+                          {{post.hood}}
+                        </td>
+                      </tr>
+                    </table>
+
                   </td>
                   <td>
-                    <a style="text-align: center;" href=" {{post.link}} ">
-                      <button class="btn btn-primary">
-                        {{post.link}}
-                      </button>
-                    </a>
+
                   </td>
                 </tr>
 
