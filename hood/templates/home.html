@@ -8,51 +8,63 @@
 {%endblock%}
 {{block.super}}
 <div class="container-fluid">
-  <div class="landing">
-
-  </div>
-  <div class="categories">
-    <h3><b>Categories</b></h3>
-  </div>
 
   <!-- posts -->
-  <div class="container">
-    <div class="posts">
-      <div class="row">
-        {% for post in all_posts %}
-        <div class="col-md-3">
-          <a href="/post/{{post.id}}">
-            <div class="card">
-              <div class="card-body">
-                <img src="{{post.image.url}}" alt="" width="100%">
-                <p><b>
-                    {{post.description}}
-                  </b></p>
-                <a style="text-align: center;" href=" {{post.link}} "> {{post.link}} </a> <br>
-                <p class="card-text"><b>Posted by:</b> {{post.user}} </p>
-              </div>
-              <div class="card-footer">
-                <a style="text-align: center;" href="{%url 'comment' post.id%}" class="btn btn-primary">Review</a>
-                <!-- <a style="text-align: center;" href="{%url 'ratings' post.id%}" class="btn btn-primary">Rate</a> -->
 
-              </div>
-            </div>
-          </a>
+  <div class="posts">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="categories">
+          <h3><b>Categories</b></h3>
         </div>
-        {%endfor%}
       </div>
+      {% for post in all_posts %}
+      <div class="col-md-8">
+        <a href="/post/{{post.id}}">
+          <div class="card">
+            <div class="card-body">
+              <table>
+
+                <tr>
+                  <td><img src="{{post.image.url}}" alt="" width="100%"></td>
+                  <td>
+                    <a style="text-align: center;" href="{%url 'comment' post.id%}" class="btn btn-primary">leave a
+                      comment
+                    </a>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td><p class="card-text"><b>Posted by:</b> {{post.user}} </p></td>
+                  <td>
+                    <a style="text-align: center;" href=" {{post.link}} "> 
+                    <button class="btn btn-primary">
+                      {{post.link}}
+                    </button> 
+                  </a>
+                </td>
+                </tr>
+
+              </table>
+
+              <p><b>
+                  {{post.description}}
+                </b></p>
+              
+              
+            </div>
+            <div class="card-footer">
+
+
+            </div>
+          </div>
+        </a>
+      </div>
+      {%endfor%}
     </div>
   </div>
 </div>
 <style>
-  .landing {
-    background-image: url('static/ai-7114793_1920.jpg');
-    background-position:'';
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 500px;
-    width: 100%;
-    margin-left: 0;
-  }
+
 </style>
 {%endblock%}
