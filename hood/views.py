@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from .models import Post, Profile,Hood, Comment, Business
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout
-from .forms import UpdateProfileForm,NewPostForm,CommentForm
+from .forms import UpdateProfileForm,NewPostForm,CommentForm,NewBusinessForm,NewHoodForm
 from django.contrib import messages
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -48,6 +48,38 @@ def new_post(request):
     else:
         form = NewPostForm()
     return render(request,'new_post.html',{'form':form})
+    
+
+@login_required(login_url = '/accounts/login/')
+def newbiz(request):
+    if request.method=='POST':
+        form = NewBusinessForm(request.POST,request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = request.user
+            post.save()
+
+            return redirect('home')
+
+    else:
+        form = NewPostForm()
+    return render(request,'new_post.html',{'form':form})
+
+
+@login_required(login_url = '/accounts/login/')
+def newhood(request):
+    if request.method=='POST':
+        form = NewHoodForm(request.POST,request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = request.user
+            post.save()
+
+            return redirect('home')
+
+    else:
+        form = NewPostForm()
+    return render(request,'newhood.html',{'form':form})
 
 @login_required(login_url = '/accounts/login/')
 def comment(request,id):
