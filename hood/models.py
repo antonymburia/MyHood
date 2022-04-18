@@ -11,7 +11,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User,on_delete = models.CASCADE)
     bio = models.TextField(max_length=1000)
     about = models.TextField(max_length=5000)
-    
+
     
     def __str__(self):
         return self.username
@@ -53,8 +53,8 @@ class Post(models.Model):
 
     @classmethod
     def search_post(cls,search_term):
-        return cls.objects.filter(title__icontains=search_term).all()
-
+        searched_project = cls.objects.filter(title = search_term)
+        return searched_project
 
 class Hood(models.Model):
     name = models.CharField(max_length=500)

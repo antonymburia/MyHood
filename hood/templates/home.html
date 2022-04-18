@@ -15,7 +15,15 @@
     <div class="row">
       <div class="col-md-4">
         <div class="row">
-          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <div class="sticky-top">
+              <a href="/admin">
+                <button class="btn-primary">
+                  Dashboard
+                </button>
+              </a>
+            </div>
+          </div>
           <div class="col-md-4">
             <div class="hood">
               <h3><b>hoods</b></h3>
@@ -53,18 +61,18 @@
                         </td>
                       </tr>
                       <tr>
-                        <td>
+                        <td class="right">
                           <b>Hood:</b> <br>
                           {{post.hood.name}}
                         </td>
                       </tr>
                       <tr>
-                        <td>
+                        <td class="right">
                           <b>Business:</b> <br>
                           {{post.business.name}}
                         </td>
                       <tr>
-                        <td>
+                        <td class="right">
                           <p class="card-text"><b>Posted by:</b><br>
                             {{post.user}} </p>
                         </td>
@@ -107,6 +115,9 @@
   </div>
 </div>
 <style>
-
+.right{
+  color: #000;
+  padding: 10%;
+}
 </style>
 {%endblock%}
