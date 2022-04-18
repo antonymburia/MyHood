@@ -14,17 +14,23 @@
   <div class="posts">
     <div class="row">
       <div class="col-md-4">
-        <div class="hood">
-          <h3><b>hoods</b></h3>
-          {%for hood in hoods%}
-          {{hood.name}} <br>
-          {%endfor%}
-        </div>
-        <div class="business">
-          <h3><b>Businesses</b></h3>
-          {%for business in businesses%}
-          {{business.name}} <br>
-          {%endfor%}
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <div class="hood">
+              <h3><b>hoods</b></h3>
+              {%for hood in hoods%}
+              {{hood.name}} <br>
+              {%endfor%}
+            </div>
+            <div class="business">
+              <h3><b>Businesses</b></h3>
+              {%for business in businesses%}
+              {{business.name}} <br>
+              {%endfor%}
+            </div>
+          </div>
+          <div class="col-md-4"></div>
         </div>
       </div>
       {% for post in all_posts %}
@@ -37,33 +43,44 @@
                 <tr>
                   <td><img src="{{post.image.url}}" alt="" width="100%"></td>
                   <td>
-                    <a style="text-align: center;" href="{%url 'comment' post.id%}" class="btn btn-primary">leave a
-                      comment
-                    </a>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>
                     <table>
                       <tr>
                         <td>
-                          <p class="card-text"><b>Posted by:</b> {{post.user}} </p>
+                          <a style="text-align: center;" href="{%url 'comment' post.id%}" class="btn btn-primary">leave
+                            a
+                            comment
+                          </a>
                         </td>
                       </tr>
                       <tr>
                         <td>
-                          <h3><b>Hood:</b></h3>
-                          {{post.hood}}
+                          <b>Hood:</b> <br>
+                          {{post.hood.name}}
                         </td>
                       </tr>
-                    </table>
-
-                  </td>
-                  <td>
-
-                  </td>
+                      <tr>
+                        <td>
+                          <b>Business:</b> <br>
+                          {{post.business.name}}
+                        </td>
+                      <tr>
+                        <td>
+                          <p class="card-text"><b>Posted by:</b><br>
+                            {{post.user}} </p>
+                        </td>
+                      </tr>
                 </tr>
+              </table>
+
+              </td>
+              </tr>
+
+              <tr>
+
+                <td>
+
+                </td>
+              </tr>
 
               </table>
 

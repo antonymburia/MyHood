@@ -24,7 +24,8 @@
      </div>
      <div class="card-footer">
       <b>Posted by:</b> {{post.user}} <br>
-      post link: <a href=" {{post.link}} "> {{post.link}} </a> <br>
+      Business:  {{post.business.name}} <br>
+      Hood:  {{post.hood.name}} <br>
       <a href="{%url 'comment' post.id%}" class="btn btn-primary" style="text-align: center;">Leave a comment</a>
 
      </div>

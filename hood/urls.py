@@ -7,5 +7,7 @@ urlpatterns=[
    path('profile/',views.profile,name = 'profile'),
    path('comment/<int:id>/',views.comment,name='comment'),
    path('newpost/',views.new_post,name='newpost'),
+   # path('newhood/',views.newhood,name='newhood'),
+   # path('newbiz/',views.newbiz,name='newbiz'),
    path('post/<int:id>/',views.post,name='post'),
 ]
