@@ -104,6 +104,23 @@ def comment(request,id):
         form = CommentForm()
         return render(request,'comment.html',{'form':form,'id':id})
 
+
+@login_required(login_url = '/accounts/login/')
+def search_results(request):
+
+    if 'post' in request.GET and request.GET['post']:
+        search_term = request.GET.get('post')
+        searched_posts = Post.search_post(search_term)
+        message = f'{search_term}'
+
+        return render(request,'search.html',{'message':message,'post':searched_posts})
+
+    else:
+        message = 'You havnt entered anything'
+        return render(request,'search.html',{'message':message})
+
+
+
 @login_required(login_url = '/accounts/login/')
 def post(request,id):  
     post = Post.objects.get(id = id)
