@@ -34,8 +34,6 @@ class Post(models.Model):
     def save_post(self):
         self.save()
 
-    # def __str__(self):
-    #     return self.hood
 
     @classmethod
     def all_posts(cls):
@@ -60,7 +58,9 @@ class Post(models.Model):
 
 class Hood(models.Model):
     name = models.CharField(max_length=500)
-    
+
+def __str__(self):
+    return self.name   
 
 def save_hood(self):
         self.save()
@@ -68,12 +68,10 @@ def save_hood(self):
 def delete_hood(self):
         self.delete()
 
-def __str__(self):
-        return self.name
 
 class Business(models.Model):
     name = models.CharField(max_length=500)
-    contact = models.TextField(max_length=20,default=None)
+    contact = models.CharField(max_length=20,default=None)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     
 def __str__(self):
