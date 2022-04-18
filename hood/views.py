@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Post, Profile,Category, Comment
+from .models import Post, Profile,Hood, Comment
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout
 from .forms import UpdateProfileForm,NewPostForm,CommentForm
@@ -75,12 +75,12 @@ def post(request,id):
 
     post = Post.objects.get(id = id)
     comments = Comment.objects.filter(post_id = id)
-    categories = Category.objects.filter(post_id = id)
+    hoods = Hood.objects.filter(post_id = id)
     designrating = []
     usabilityrating = []
     contentrating= []
-    if categories:
-        for rating in categories:
+    if hoods:
+        for rating in hoods:
             designrating.append(rating.design)
             usabilityrating.append(rating.usability)
             contentrating.append(rating.content)
@@ -91,34 +91,6 @@ def post(request,id):
         content = round(sum(contentrating)/total*100,1)
         return render(request,'post.html',{'post':post,'comments':comments,'design':design,'usability':usability,'content':content})
 
-
-@login_required(login_url = '/accounts/login/')
-def rate(request,id):
-    id=id
-    if request.method =='POST':
-        categories = Category.objects.filter(id = id)
-        for rating in categories:
-            if rating.user == request.user:
-                messages.info(request,'You can only rate once')
-                return redirect('post',id)
-        design = request.POST.get('design')
-        usability = request.POST.get('usability')
-        content = request.POST.get('content')
-
-        if design and usability and content:
-            post = Post.objects.get(id = id)
-            rating = Category(design = design,usability = usability,content = content,post_id = post,user = request.user)
-            rating.save()
-            return redirect('post',id)
-
-        else:
-            messages.info(request,'enter required fields')
-            return redirect('post',id)
-
-
-    else:
-        messages.info(request,'enter required fields')
-        return redirect(post,id)
 
 def logoutUser(request):
  logout(request)
