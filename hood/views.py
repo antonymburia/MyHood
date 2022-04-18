@@ -72,24 +72,9 @@ def comment(request,id):
 
 @login_required(login_url = '/accounts/login/')
 def post(request,id):  
-
     post = Post.objects.get(id = id)
     comments = Comment.objects.filter(post_id = id)
-    hoods = Hood.objects.filter(post_id = id)
-    designrating = []
-    usabilityrating = []
-    contentrating= []
-    if hoods:
-        for rating in hoods:
-            designrating.append(rating.design)
-            usabilityrating.append(rating.usability)
-            contentrating.append(rating.content)
-
-        total = len(designrating)*10
-        design = round(sum(designrating)/total*100,1)
-        usability = round(sum(usabilityrating)/total*100,1)
-        content = round(sum(contentrating)/total*100,1)
-        return render(request,'post.html',{'post':post,'comments':comments,'design':design,'usability':usability,'content':content})
+    return render(request,'post.html',{'post':post,'id':id,'comments':comments})
 
 
 def logoutUser(request):
