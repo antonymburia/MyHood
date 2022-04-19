@@ -10,4 +10,5 @@ urlpatterns=[
    # path('newhood/',views.newhood,name='newhood'),
    # path('newbiz/',views.newbiz,name='newbiz'),
    path('post/<int:id>/',views.post,name='post'),
+   path('search/',views.search_results,name = 'search_results'),
 ]
