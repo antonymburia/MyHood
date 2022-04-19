@@ -8,6 +8,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 # Create your views here.
+@login_required(login_url = '/accounts/login/')
 def home(request):
 
     all_posts = Post.all_posts()
